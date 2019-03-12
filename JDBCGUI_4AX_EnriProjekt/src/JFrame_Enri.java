@@ -51,23 +51,26 @@ public class JFrame_Enri extends javax.swing.JFrame {
         jButtonDisconnect = new javax.swing.JButton();
         jTextFieldlocalhost = new javax.swing.JTextField();
         jTextField3306 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextFieldid = new javax.swing.JTextField();
-        jTextFieldname = new javax.swing.JTextField();
-        jTextFieldcc = new javax.swing.JTextField();
-        jTextFielddistrict = new javax.swing.JTextField();
-        jTextFieldpopulation = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelCode = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelRating = new javax.swing.JLabel();
+        jTextFieldcode = new javax.swing.JTextField();
+        jTextFieldtitle = new javax.swing.JTextField();
+        jTextFieldrating = new javax.swing.JTextField();
+        jButtonAddMovie = new javax.swing.JButton();
+        jButtonRechts = new javax.swing.JButton();
+        jButtonLinks = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jLabelStatement = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabelDatabank = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
+        jLabelPassword = new javax.swing.JLabel();
+        jTextFieldDB = new javax.swing.JTextField();
+        jTextFieldusername = new javax.swing.JTextField();
+        jTextFieldpassword = new javax.swing.JTextField();
+        jButtonUpdate = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -106,42 +109,60 @@ public class JFrame_Enri extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("ID:");
+        jLabelCode.setText("Code:");
 
-        jLabel2.setText("Name:");
+        jLabelTitle.setText("Title:");
 
-        jLabel4.setText("CountryCode:");
+        jLabelRating.setText("Rating:");
 
-        jLabel5.setText("District:");
-
-        jLabel6.setText("Population:");
-
-        jTextFieldid.setEditable(false);
-        jTextFieldid.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldcode.setEditable(false);
+        jTextFieldcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldidActionPerformed(evt);
+                jTextFieldcodeActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Add City");
-
-        jButton2.setText(">");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddMovie.setText("Add Movie");
+        jButtonAddMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAddMovieActionPerformed(evt);
             }
         });
 
-        jButton3.setText("<");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRechts.setText(">");
+        jButtonRechts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonRechtsActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Clear");
+        jButtonLinks.setText("<");
+        jButtonLinks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLinksActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("custom SQL Statement for SELECT");
+        jButtonDelete.setText("Delete");
+
+        jLabelStatement.setText("custom SQL Statement for SELECT");
+
+        jLabelDatabank.setText("Databank");
+
+        jLabelUsername.setText("Username");
+
+        jLabelPassword.setText("Password");
+
+        jTextFieldDB.setText("1819_4ax_enrishtjefni_movie");
+
+        jTextFieldusername.setText("root");
+        jTextFieldusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldusernameActionPerformed(evt);
+            }
+        });
+
+        jButtonUpdate.setText("Update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,30 +170,42 @@ public class JFrame_Enri extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jLabel7)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addComponent(jLabelStatement)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator2)
-                    .addComponent(jSeparator1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelServer)
                             .addComponent(jLabelPort))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldlocalhost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jTextFieldlocalhost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabelPassword)
+                            .addComponent(jLabelDatabank)
+                            .addComponent(jLabelUsername))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextFieldusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextFieldpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldDB, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTitle)
+                            .addComponent(jLabelCode)
+                            .addComponent(jLabelRating))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -180,19 +213,20 @@ public class JFrame_Enri extends javax.swing.JFrame {
                                 .addComponent(jButtonDisconnect))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldpopulation, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(jTextFielddistrict)
-                                    .addComponent(jTextFieldcc)
-                                    .addComponent(jTextFieldid)
-                                    .addComponent(jTextFieldname))
+                                    .addComponent(jTextFieldcode, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldtitle)
+                                    .addComponent(jTextFieldrating))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(jButtonRechts)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(jButtonLinks))
+                                    .addComponent(jButtonUpdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonAddMovie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,53 +235,56 @@ public class JFrame_Enri extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonConnect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
                         .addComponent(jButtonDisconnect))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelServer)
-                            .addComponent(jTextFieldlocalhost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldlocalhost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDatabank)
+                            .addComponent(jTextFieldDB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonConnect))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelPort)
-                            .addComponent(jTextField3306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelPort)
+                                .addComponent(jTextField3306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelUsername)
+                                .addComponent(jTextFieldusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPassword))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jLabelCode)
+                    .addComponent(jTextFieldcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddMovie))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jTextFieldtitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTitle)
+                    .addComponent(jButtonUpdate))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextFieldcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextFielddistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextFieldpopulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabelRating)
+                            .addComponent(jTextFieldrating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonLinks)
+                            .addComponent(jButtonRechts, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonDelete)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel7)
+                .addComponent(jLabelStatement)
                 .addContainerGap())
         );
 
@@ -265,31 +302,29 @@ public class JFrame_Enri extends javax.swing.JFrame {
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
         
         try {
-            con=DriverManager.getConnection("jdbc:mysql://"+jTextFieldlocalhost.getText()+":3306/world", "root", "");
+            con=DriverManager.getConnection("jdbc:mysql://"+jTextFieldlocalhost.getText()+":"+jTextField3306.getText()+"/"+jTextFieldDB.getText(), "root", "");
             jButtonConnect.setEnabled(false);
             jTextFieldlocalhost.setEnabled(false);
             jButtonDisconnect.setEnabled(true);
         } catch (SQLException ex) {
-            System.out.println("SELECT konnte nicht gemacht werden");
-            javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
+            System.out.println("Connection konnte nicht gemacht werden");
+            javax.swing.JOptionPane.showMessageDialog(this, "Connection konnte nicht gemacht werden");
         }
         // SQL SELECT for all entries
         try{
-            stmt_selectAll = con.prepareStatement("SELECT * FROM city");
+            stmt_selectAll = con.prepareStatement("SELECT * FROM movies");
+            
+            
             res_selectAll = stmt_selectAll.executeQuery();
             
             if(res_selectAll.next()){
-                int id = res_selectAll.getInt("ID");
-                String name = res_selectAll.getString("Name");
-                String cc = res_selectAll.getString("CountryCode");
-                String district = res_selectAll.getString("District");
-                int population = res_selectAll.getInt("Population");
+                int code = res_selectAll.getInt("Code");
+                String title = res_selectAll.getString("Title");
+                String rating = res_selectAll.getString("Rating");
                 
-                jTextFieldid.setText(""+id);
-                jTextFieldname.setText(name);
-                jTextFieldcc.setText(cc);
-                jTextFielddistrict.setText(district);
-                jTextFieldpopulation.setText(""+population);
+                jTextFieldcode.setText(""+code);
+                jTextFieldtitle.setText(title);
+                jTextFieldrating.setText(rating);
                 
               
             }
@@ -314,26 +349,22 @@ public class JFrame_Enri extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonDisconnectActionPerformed
 
-    private void jTextFieldidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldidActionPerformed
+    private void jTextFieldcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldcodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldidActionPerformed
+    }//GEN-LAST:event_jTextFieldcodeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechtsActionPerformed
         try{
            
             
             if(res_selectAll.next()){
-                int id = res_selectAll.getInt("ID");
-                String name = res_selectAll.getString("Name");
-                String cc = res_selectAll.getString("CountryCode");
-                String district = res_selectAll.getString("District");
-                int population = res_selectAll.getInt("Population");
+                int code = res_selectAll.getInt("Code");
+                String title = res_selectAll.getString("Title");
+                String rating = res_selectAll.getString("Rating");
                 
-                jTextFieldid.setText(""+id);
-                jTextFieldname.setText(name);
-                jTextFieldcc.setText(cc);
-                jTextFielddistrict.setText(district);
-                jTextFieldpopulation.setText(""+population);
+                jTextFieldcode.setText(""+code);
+                jTextFieldtitle.setText(title);
+                jTextFieldrating.setText(rating);
                 
               
             }else{
@@ -343,24 +374,20 @@ public class JFrame_Enri extends javax.swing.JFrame {
             System.out.println("SELECT konnte nicht gemacht werden");
             javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonRechtsActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonLinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLinksActionPerformed
          try{
            
             
             if(res_selectAll.previous()){
-                int id = res_selectAll.getInt("ID");
-                String name = res_selectAll.getString("Name");
-                String cc = res_selectAll.getString("CountryCode");
-                String district = res_selectAll.getString("District");
-                int population = res_selectAll.getInt("Population");
+                int code = res_selectAll.getInt("Code");
+                String title = res_selectAll.getString("Title");
+                String rating = res_selectAll.getString("Rating");
                 
-                jTextFieldid.setText(""+id);
-                jTextFieldname.setText(name);
-                jTextFieldcc.setText(cc);
-                jTextFielddistrict.setText(district);
-                jTextFieldpopulation.setText(""+population);
+                jTextFieldcode.setText(""+code);
+                jTextFieldtitle.setText(title);
+                jTextFieldrating.setText(rating);
                 
               
             }else{
@@ -371,7 +398,15 @@ public class JFrame_Enri extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
         }
                 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonLinksActionPerformed
+
+    private void jTextFieldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldusernameActionPerformed
+
+    private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
+        
+    }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,29 +444,32 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonAddMovie;
     private javax.swing.JButton jButtonConnect;
+    private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDisconnect;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonLinks;
+    private javax.swing.JButton jButtonRechts;
+    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelCode;
+    private javax.swing.JLabel jLabelDatabank;
+    private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPort;
+    private javax.swing.JLabel jLabelRating;
     private javax.swing.JLabel jLabelServer;
+    private javax.swing.JLabel jLabelStatement;
+    private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JLabel jLabelUsername;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField3306;
-    private javax.swing.JTextField jTextFieldcc;
-    private javax.swing.JTextField jTextFielddistrict;
-    private javax.swing.JTextField jTextFieldid;
+    private javax.swing.JTextField jTextFieldDB;
+    private javax.swing.JTextField jTextFieldcode;
     private javax.swing.JTextField jTextFieldlocalhost;
-    private javax.swing.JTextField jTextFieldname;
-    private javax.swing.JTextField jTextFieldpopulation;
+    private javax.swing.JTextField jTextFieldpassword;
+    private javax.swing.JTextField jTextFieldrating;
+    private javax.swing.JTextField jTextFieldtitle;
+    private javax.swing.JTextField jTextFieldusername;
     // End of variables declaration//GEN-END:variables
 }
