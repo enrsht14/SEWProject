@@ -19,6 +19,10 @@ public class JFrame_Enri extends javax.swing.JFrame {
     Connection con=null;
     PreparedStatement stmt_selectAll=null;
     ResultSet res_selectAll=null;
+    PreparedStatement stmt_add=null;
+    PreparedStatement stmt_update=null;
+    PreparedStatement stmt_delete=null;
+    
     
     
     public JFrame_Enri() {
@@ -71,6 +75,7 @@ public class JFrame_Enri extends javax.swing.JFrame {
         jTextFieldusername = new javax.swing.JTextField();
         jTextFieldpassword = new javax.swing.JTextField();
         jButtonUpdate = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -144,6 +149,11 @@ public class JFrame_Enri extends javax.swing.JFrame {
         });
 
         jButtonDelete.setText("Delete");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jLabelStatement.setText("custom SQL Statement for SELECT");
 
@@ -163,6 +173,18 @@ public class JFrame_Enri extends javax.swing.JFrame {
         });
 
         jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+
+        jButtonClear.setText("Clear");
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,6 +239,8 @@ public class JFrame_Enri extends javax.swing.JFrame {
                                     .addComponent(jTextFieldtitle)
                                     .addComponent(jTextFieldrating))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jButtonRechts)
@@ -262,7 +286,8 @@ public class JFrame_Enri extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCode)
                     .addComponent(jTextFieldcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAddMovie))
+                    .addComponent(jButtonAddMovie)
+                    .addComponent(jButtonClear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldtitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,6 +338,10 @@ public class JFrame_Enri extends javax.swing.JFrame {
         // SQL SELECT for all entries
         try{
             stmt_selectAll = con.prepareStatement("SELECT * FROM movies");
+            stmt_add = con.prepareStatement("INSERT INTO movies (Title, Rating) VALUES (?, ?)");
+            stmt_update = con.prepareStatement("UPDATE movies SET Title = ?, Rating = ? WHERE CODE = ?");
+            stmt_delete = con.prepareStatement("DELETE FROM movies WHERE CODE = ?");
+            
             
             
             res_selectAll = stmt_selectAll.executeQuery();
@@ -405,12 +434,38 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldusernameActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
-        
+        try{
+            stmt_add.setString(1, jTextFieldtitle.getText());
+            stmt_add.setString(2, jTextFieldrating.getText());
+            
+            //stmt_add.executeUpdate();
+            int rows_changed = stmt_add.executeUpdate();
+            
+            if(rows_changed > 0){
+                javax.swing.JOptionPane.showMessageDialog(this, "Successful");
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Not Successful");
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            System.out.println("Not Successful");
+            javax.swing.JOptionPane.showMessageDialog(this, "Not Successful");
+        }        
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        jTextFieldtitle.setText("empty");
+        jTextFieldrating.setText("empty");
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -445,6 +500,7 @@ public class JFrame_Enri extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddMovie;
+    private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonConnect;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDisconnect;
