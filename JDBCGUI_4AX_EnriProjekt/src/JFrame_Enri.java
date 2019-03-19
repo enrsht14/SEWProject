@@ -172,6 +172,12 @@ public class JFrame_Enri extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldpasswordActionPerformed(evt);
+            }
+        });
+
         jButtonUpdate.setText("Update");
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,7 +333,7 @@ public class JFrame_Enri extends javax.swing.JFrame {
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
         
         try {
-            con=DriverManager.getConnection("jdbc:mysql://"+jTextFieldlocalhost.getText()+":"+jTextField3306.getText()+"/"+jTextFieldDB.getText(), "root", "");
+            con=DriverManager.getConnection("jdbc:mysql://"+jTextFieldlocalhost.getText()+":"+jTextField3306.getText()+"/"+jTextFieldDB.getText(),jTextFieldusername.getText(),jTextFieldpassword.getText());
             jButtonConnect.setEnabled(false);
             jTextFieldlocalhost.setEnabled(false);
             jButtonDisconnect.setEnabled(true);
@@ -459,12 +465,49 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try{
         
+            stmt_update.setString(1, jTextFieldtitle.getText());
+            stmt_update.setString(2, jTextFieldrating.getText());
+            stmt_update.setInt(3, Integer.parseInt(jTextFieldcode.getText()));
+            //stmt_add.executeUpdate();
+            int rows_changed = stmt_update.executeUpdate();
+            res_selectAll = stmt_selectAll.executeQuery();
+            if(rows_changed > 0){
+                javax.swing.JOptionPane.showMessageDialog(this, "Updated!");
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Not Updated!");
+            }
+            
+        }catch(SQLException ex) {
+            System.out.println("Not Updated!");    
+                javax.swing.JOptionPane.showMessageDialog(this, "Not Updated!");
+        }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        try{
         
+
+            stmt_delete.setInt(1, Integer.parseInt(jTextFieldcode.getText()));
+        
+            int rows_changed = stmt_delete.executeUpdate();
+            res_selectAll = stmt_selectAll.executeQuery();
+            if(rows_changed > 0){
+                javax.swing.JOptionPane.showMessageDialog(this, "Deleted!");
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Not Deleted!");
+            }
+            
+        }catch(SQLException ex) {
+            System.out.println("Not Deleted!");    
+                javax.swing.JOptionPane.showMessageDialog(this, "Not Deleted!");
+        }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jTextFieldpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldpasswordActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
