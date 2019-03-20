@@ -1,4 +1,4 @@
-
+// Alle SQL classes importieren
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,28 +15,25 @@ import java.sql.SQLException;
  *
  * @author enrsht14
  */
-public class JFrame_Enri extends javax.swing.JFrame {
-    Connection con=null;
-    PreparedStatement stmt_selectAll=null;
-    ResultSet res_selectAll=null;
-    PreparedStatement stmt_add=null;
-    PreparedStatement stmt_update=null;
-    PreparedStatement stmt_delete=null;
+public class JFrame_Enri extends javax.swing.JFrame { //Um eine GUI-Applikation zu schreiben, erweitern wir die JFrame-Klasse
+    Connection con=null; //Verbindung zum Datenbank
+    PreparedStatement stmt_selectAll=null; //PreparedStatements fur SELECT
+    ResultSet res_selectAll=null; //ResultSet fur SELECT
+    PreparedStatement stmt_add=null; //PreparedStatements fur INSERT, ein Movie zu addieren
+    PreparedStatement stmt_update=null; //PreparedStatement fur updating einer Movie
+    PreparedStatement stmt_delete=null; //PreparedStatement fur deleting ein Movie
     
     
     
-    public JFrame_Enri() {
-        initComponents();
-        
-        try {
+    public JFrame_Enri() { // Konstruktor 
+        initComponents(); //Komponente initialisieren
+        try { // Uberprufen ob die DB geladen werden konnen.
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             System.out.println("Datenbankdriver konnte nicht geladen werden");
             javax.swing.JOptionPane.showMessageDialog(this, "Datenbankdriver konnte nicht geladen werden");
             System.exit(1);            
         }
-        
-
     }
 
     /**
@@ -331,54 +328,47 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldlocalhostActionPerformed
 
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
-        
-        try {
+        try { //establish connection
             con=DriverManager.getConnection("jdbc:mysql://"+jTextFieldlocalhost.getText()+":"+jTextField3306.getText()+"/"+jTextFieldDB.getText(),jTextFieldusername.getText(),jTextFieldpassword.getText());
+            //disable und enable components with respect to connected or not connected
             jButtonConnect.setEnabled(false);
             jTextFieldlocalhost.setEnabled(false);
             jButtonDisconnect.setEnabled(true);
-        } catch (SQLException ex) {
+        } catch (SQLException ex) { //error message can not connect
             System.out.println("Connection konnte nicht gemacht werden");
             javax.swing.JOptionPane.showMessageDialog(this, "Connection konnte nicht gemacht werden");
         }
         // SQL SELECT for all entries
-        try{
+        try{ 
+            // SQL PreparedStatements
             stmt_selectAll = con.prepareStatement("SELECT * FROM movies");
             stmt_add = con.prepareStatement("INSERT INTO movies (Title, Rating) VALUES (?, ?)");
             stmt_update = con.prepareStatement("UPDATE movies SET Title = ?, Rating = ? WHERE CODE = ?");
             stmt_delete = con.prepareStatement("DELETE FROM movies WHERE CODE = ?");
-            
-            
-            
             res_selectAll = stmt_selectAll.executeQuery();
-            
-            if(res_selectAll.next()){
+            if(res_selectAll.next()){ 
+                // Resultaten von ResultSet nehmen
                 int code = res_selectAll.getInt("Code");
                 String title = res_selectAll.getString("Title");
                 String rating = res_selectAll.getString("Rating");
-                
+                // Resultaten die genommen wurden, in Variablen speichern, Textfields mit Werten einfuegen
                 jTextFieldcode.setText(""+code);
                 jTextFieldtitle.setText(title);
-                jTextFieldrating.setText(rating);
-                
-              
+                jTextFieldrating.setText(rating);  
             }
-        }catch(SQLException ex){
+        }catch(SQLException ex){ //error message can not connect
             System.out.println("SELECT konnte nicht gemacht werden");
             javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
-        }
-            
+        }     
     }//GEN-LAST:event_jButtonConnectActionPerformed
 
     private void jButtonDisconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisconnectActionPerformed
-
-        try {
-            
+        try { //establish disconnection
             con.close();
             jButtonConnect.setEnabled(true);
             jTextFieldlocalhost.setEnabled(true);
             jButtonDisconnect.setEnabled(false);
-        } catch (SQLException ex) {
+        } catch (SQLException ex) { // Die Verbindung kann mit dem DB nicht geschlossen werden 
             System.out.println("Verbindung mit dem Datenbankserver konnte nicht geschlossen werden");
             javax.swing.JOptionPane.showMessageDialog(this, "Datenbankdriver konnte nicht geschlossen werden");
         }
@@ -389,50 +379,39 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldcodeActionPerformed
 
     private void jButtonRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechtsActionPerformed
-        try{
-           
-            
-            if(res_selectAll.next()){
+        try{ //Resultaten von ResultSet nehmen
+            if(res_selectAll.next()){ //hier werden die Movies rechts verschieben
                 int code = res_selectAll.getInt("Code");
                 String title = res_selectAll.getString("Title");
                 String rating = res_selectAll.getString("Rating");
-                
                 jTextFieldcode.setText(""+code);
                 jTextFieldtitle.setText(title);
                 jTextFieldrating.setText(rating);
-                
-              
-            }else{
+            }else{ //den Zeilenzeiger setzen vor das erste Element
                 res_selectAll.beforeFirst();
             }
-        }catch(SQLException ex){
+        }catch(SQLException ex){ //SELECT kann nicht gemacht werden
             System.out.println("SELECT konnte nicht gemacht werden");
             javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
         }
     }//GEN-LAST:event_jButtonRechtsActionPerformed
 
     private void jButtonLinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLinksActionPerformed
-         try{
-           
-            
-            if(res_selectAll.previous()){
+         try{ //Resultaten von ResultSet nehmen
+            if(res_selectAll.previous()){ //hier werden die Movies links verschieben
                 int code = res_selectAll.getInt("Code");
                 String title = res_selectAll.getString("Title");
                 String rating = res_selectAll.getString("Rating");
-                
                 jTextFieldcode.setText(""+code);
                 jTextFieldtitle.setText(title);
-                jTextFieldrating.setText(rating);
-                
-              
-            }else{
+                jTextFieldrating.setText(rating); 
+            }else{ //den Zeilenzeiger setzen nach das erste Element
                 res_selectAll.afterLast();
             }
-        }catch(SQLException ex){
+        }catch(SQLException ex){ //SELECT kann nicht gemacht werden
             System.out.println("SELECT konnte nicht gemacht werden");
             javax.swing.JOptionPane.showMessageDialog(this, "SELECT konnte nicht gemacht werden");
-        }
-                
+        }          
     }//GEN-LAST:event_jButtonLinksActionPerformed
 
     private void jTextFieldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldusernameActionPerformed
@@ -443,10 +422,8 @@ public class JFrame_Enri extends javax.swing.JFrame {
         try{
             stmt_add.setString(1, jTextFieldtitle.getText());
             stmt_add.setString(2, jTextFieldrating.getText());
-            
             //stmt_add.executeUpdate();
             int rows_changed = stmt_add.executeUpdate();
-            
             if(rows_changed > 0){
                 javax.swing.JOptionPane.showMessageDialog(this, "Successful");
             }else{
@@ -460,13 +437,12 @@ public class JFrame_Enri extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        jTextFieldtitle.setText("empty");
-        jTextFieldrating.setText("empty");
+        jTextFieldtitle.setText("empty"); // TextField von Titel leer lassen
+        jTextFieldrating.setText("empty"); // TextField von Rating leer lassen
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         try{
-        
             stmt_update.setString(1, jTextFieldtitle.getText());
             stmt_update.setString(2, jTextFieldrating.getText());
             stmt_update.setInt(3, Integer.parseInt(jTextFieldcode.getText()));
@@ -477,31 +453,26 @@ public class JFrame_Enri extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Updated!");
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "Not Updated!");
-            }
-            
+            }    
         }catch(SQLException ex) {
             System.out.println("Not Updated!");    
-                javax.swing.JOptionPane.showMessageDialog(this, "Not Updated!");
+            javax.swing.JOptionPane.showMessageDialog(this, "Not Updated!");
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try{
-        
-
             stmt_delete.setInt(1, Integer.parseInt(jTextFieldcode.getText()));
-        
             int rows_changed = stmt_delete.executeUpdate();
             res_selectAll = stmt_selectAll.executeQuery();
             if(rows_changed > 0){
                 javax.swing.JOptionPane.showMessageDialog(this, "Deleted!");
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "Not Deleted!");
-            }
-            
+            }  
         }catch(SQLException ex) {
             System.out.println("Not Deleted!");    
-                javax.swing.JOptionPane.showMessageDialog(this, "Not Deleted!");
+            javax.swing.JOptionPane.showMessageDialog(this, "Not Deleted!");
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
